@@ -32,7 +32,7 @@ function renderProducts(productsArray) {
         newProduct.appendChild(link);
 		
 		
-	    document.getElementById('productsContainer').appendChild(newProduct);
+	    document.getElementById('productsMainContainer').appendChild(newProduct);
 	});
 }
 

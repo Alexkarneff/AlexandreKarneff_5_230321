@@ -22,7 +22,7 @@ document.getElementsByClassName('text_description')[0].textContent = res.descrip
 res.varnish.forEach(varnishColor => {
     newChoice = addVarnishOption(varnishColor);
 
-    document.getElementById('varnishChoices').appendChild(newChoice);
+    document.getElementById('varnishOptions').appendChild(newChoice);
 
 });
 })
