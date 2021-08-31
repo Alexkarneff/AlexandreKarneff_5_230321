@@ -40,7 +40,7 @@ function renderProducts(productsArray) {
 
 function getProductLink(product) {
 	const link = document.createElement("a");
-	link.setAttribute("href", "product.html?id="+product._id);
+	link.setAttribute("href", "products.html?id="+product._id);
 	return link;
 }
 

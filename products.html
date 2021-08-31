@@ -52,12 +52,12 @@
       <div id="mainProductContainer">
       <div id="containerImgDescription">
 
-        <img src="" alt=""> 
+        <img id="imgProduct" src="" alt=""> 
 
 
         <div class="description">
           <p class="description_title">Description</p>
-          <p class="description_text"></p>
+          <p class="text_description"></p>
 
         </div>
 
@@ -67,17 +67,33 @@
         <h1 class="product_name"></h1>
         <p class="product_price"></p>
 
+        <div id="varnishSelector">
+          <p> Vernis </p>
+          <select id="varnishOptions" title="Coloris de Vernis">
+  
+          </select>
+  
+        </div>
+
+        <div id="quantity">
+          <p> Quantité </p>
+
+          <div class="furnitureQuantity">
+            <input type="number" class="productQuantity" value="" placeholder="0" alt="Entrer une quantité">
+
+          </div>
+
+        </div>
+
       </div>
 
-      <div id="varnishSelector">
-        Vernis
-        <select id="varnishOptions" title="Coloris de Vernis">
-          <option class="varnishOption"> </option>
+ 
 
-        </select>
 
-      </div>
 
+      <button id="addProductToCart">
+        Ajouter produit
+      </button>
     </div>
 
 
@@ -95,7 +111,7 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   
 </body>
 

@@ -11138,4 +11138,9 @@ textarea.form-control-lg {
   margin: auto;
 }
 
+.optionsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
 /*# sourceMappingURL=style.css.map */
