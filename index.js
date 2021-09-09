@@ -55,12 +55,12 @@ function getProductLink(product) {
 
 function getProductDescription(product) {
 	const description  = document.createElement("div");
-	description.classList.add("index__description");
+	description.classList.add("index_description");
 	const productName = document.createElement("p");
 	const productPrice = document.createElement("p");
 
-	productName.className = "index__name";
-	productPrice.className = "index__price";
+	productName.className = "index_name";
+	productPrice.className = "index_price";
 	productName.innerText = product.name;
 	productPrice.innerText = product.price + " €";
 	

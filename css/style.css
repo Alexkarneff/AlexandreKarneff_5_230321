@@ -11114,6 +11114,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+a {
+  text-decoration: none;
+  color: #915cf9;
+}
+
 #productsMainContainer {
   width: 100%;
   display: flex;
@@ -11141,6 +11146,38 @@ textarea.form-control-lg {
 .optionsContainer {
   display: flex;
   flex-direction: row;
+}
+
+#goToOrderConfirm {
+  margin-top: 10em;
+}
+
+.cartItemImage {
+  width: 500px;
+}
+
+#cartContainer {
+  margin-top: 8em;
+  margin-left: 5em;
+}
+
+.cartProductsContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2em;
+}
+
+.cart_description {
+  margin: auto;
+}
+
+.formContainer {
+  margin-top: 5em;
+  padding-left: 5em;
+}
+
+.totalPriceContainer {
+  margin-top: 5em;
 }
 
 /*# sourceMappingURL=style.css.map */

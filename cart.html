@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css" />
 
 
-  <script src="./index.js"> </script>
+  
 
 
   <title>Mon Panier</title>
@@ -47,8 +47,71 @@
       </div>
   </nav>
 
-
+  <div id="cartContainer">    
+  </div>
       
+
+  <section id="form">
+
+    <div class="formContainer">
+        <h2 class="title">Renseignez vos informations pour valider la commande</h2>
+
+        <form action="confirmedOrder.html" method="POST">
+            <div class="input-box">
+                <label for="firstName">Prénom :</label>
+                <input type="text" name="firstName" value="" id="firstName" placeholder="Entrez votre prénom"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <label for="lastName">Nom :</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Entrez votre nom" value="" required>
+            </div>
+
+            <div class="input-box">
+                <label for="address">Adresse :</label>
+                <input type="text" id="address" name="address" placeholder="Entrez le numéro et la rue" value=""
+                    required>
+            </div>
+
+            <div class="input-box">
+                <label for="complement">Complément d'adresse :</label>
+                <input type="text" id="complement" name="complement"
+                    placeholder="Ajoutez l'étage, le numéro d'appartement...." value="">
+            </div>
+
+            <div class="input-box">
+                <label for="city">Ville :</label>
+                <input type="text" id="city" name="city" placeholder="Entrez votre ville de résidence" required>
+            </div>
+
+            <div class="input-box">
+                <label for="postalCode">Code postal :</label>
+                <input type="text" id="postalCode" name="postalCode" placeholder="Entrez le code postal">
+            </div>
+
+            <div class="input-box">
+                <label for="email">E-Mail :</label>
+                <input type="email" id="email" value="" name="email" placeholder="Entrez votre adresse email"
+                    required>
+            </div>
+
+            <div class="button">
+              <input type="submit" value="Commander" id="goToOrderConfirm" class="btn-primary"></input>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+  <button id="goToOrderConfirm" class="btn-primary">
+    <a href="order.html">
+    Commander
+  </a>
+  </button>
+
+  
+
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -65,5 +128,5 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-
+  <script src="./cart.js"> </script>
 </body>
