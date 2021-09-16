@@ -13,8 +13,8 @@ fetch("http://localhost:3000/api/furniture/" + product_id)
     document.getElementsByClassName("product_name")[0].textContent =
       product.name;
 
-    document.getElementsByClassName("product_price")[0].textContent =
-      product.price + " €";
+    document.getElementsByClassName("product_price")[0].textContent = 
+    "Prix: " + product.price + " €";
 
     document.getElementById("imgProduct").setAttribute("src", product.imageUrl);
 
@@ -48,20 +48,6 @@ function addVarnishOption(varnishOption) {
 
   return newOption;
 }
-
-let productQuantity = 0;
-let quantity = document.getElementsByTagName("input")[0];
-const textQuantity = document.querySelector(".quantity > p ");
-
-quantity.addEventListener("input", function () {
-  let quantityTyped = parseFloat(this.value);
-
-  if (Number.isInteger(quantityTyped)) {
-    productQuantity = quantityTyped;
-  } else {
-    alert("Veuillez indiquer un nombre entier");
-  }
-});
 
 function addToCart(product) {
   const cart = localStorage.getItem("cart");

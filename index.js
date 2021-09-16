@@ -1,4 +1,5 @@
 
+// GET de l'api des produits pour en faire une liste
 fetch('http://localhost:3000/api/furniture')
 .then(function(res) {
 	if (res.ok) {
@@ -15,6 +16,7 @@ fetch('http://localhost:3000/api/furniture')
 });
 
 
+// faire apparaitre les composantes du produits
 function renderProducts(productsArray) {
 	productsArray.forEach((product) => {
 
@@ -37,14 +39,14 @@ function renderProducts(productsArray) {
 }
 
 
-
+// Gcréation du lien href vers la page du produit
 function getProductLink(product) {
 	const link = document.createElement("a");
 	link.setAttribute("href", "products.html?id="+product._id);
 	return link;
 }
 
-
+// faire apparaitre l'image du produit
  function getProductImg(product){
  	const image = document.createElement("img");
  	image.setAttribute("src", product.imageUrl);
@@ -52,7 +54,7 @@ function getProductLink(product) {
  	return image;
 }
 
-
+// GET de la description du produit
 function getProductDescription(product) {
 	const description  = document.createElement("div");
 	description.classList.add("index_description");

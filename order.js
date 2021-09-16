@@ -3,6 +3,7 @@ const isCartEmpty = !cartProductList || cartProductList.length == 0;
 
 displayTotalPrice(cartProductList);
 
+// fonction pour calculer et faire apparaitre le prix total du panier commandé
 function displayTotalPrice(cartProductList) {
 
 	if (isCartEmpty) {

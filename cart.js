@@ -3,13 +3,13 @@ const isCartEmpty = !cartProductList || cartProductList.length == 0;
 
 renderCartProducts(cartProductList);
 
-function isCartEmpty() {
-	if (!isCartEmpty) {
+// function isCartEmpty() {
+//	if (!isCartEmpty) {
 
-	} else {
+//	} else {
 
-	}
-}
+//	}
+// }
 
 function renderCartProducts(cartProductList) {
   if (isCartEmpty) {
@@ -87,21 +87,7 @@ function removeButton() {
   removeDiv.classList.add("removeDiv");
 }
 
-// FORM //
 
-formOrder = document.getElementsByTagName("form")[0];
-
-formOrder.addEventListener("submit", function (e) {
-  e.preventDefault();
-  if (!isCartEmpty) {
-    let contact = getContactInfo();
-    let productList = getProductList();
-    sendOrder(contact, productList);
-  } else {
-    alert("Votre panier est vide");
-    formOrder.reset();
-  }
-});
 
 // regex check
 
@@ -153,12 +139,30 @@ function emailCheck(value) {
   }
 }
 
+let validTexts
 let validAddress = false;
 let validPostalCode = false;
 let validEmail = false;
 
 function formListnener(element) {
   element.addEventListener("change", function () {
+
+
+    // vérification des 3 champs de texte
+    if (element.name == 'firstName' || element.name == 'lastName' || element.name == 'city') {
+
+			element.setAttribute("value", this.value);
+			validTexts = textCheck(this.value);
+
+			if (!validTexts) {
+				element.classList.add('errorText');
+				element.setAttribute("value", "");
+			} else {
+				element.classList.remove('errorText');
+			}
+		}
+
+    // vérification de l'adresse 
     if (element.name == "address" || element.name == "complement") {
       element.setAttribute("value", this.value);
       validAddress = addressCheck(this.value);
@@ -171,6 +175,8 @@ function formListnener(element) {
       }
     }
 
+
+    // vérification du code postal
     if (element.name === "postalCode") {
       element.setAttribute("value", this.value);
       validPostalCode = postalCodeCheck(this.value);
@@ -183,6 +189,8 @@ function formListnener(element) {
       }
     }
 
+
+    //vérification de l'adresse email
     if (element.type === "email") {
       element.setAttribute("value", this.value);
       validEmail = emailCheck(this.value);
@@ -195,15 +203,49 @@ function formListnener(element) {
         localStorage.emailAddress = JSON.stringify(element.value);
       }
     }
+
+    if (element.hasAttribute('required'))  {
+      contact[element.name] = element.value
+    }
   });
 }
 
+
+// FORM //
+
+
+formOrder = document.getElementsByTagName("form")[0];
+
+// ajouter un evenement sur le click du submit du formulaire pour commander
+
+formOrder.addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (!isCartEmpty) {
+    let contact = getContactInfo();
+    let productList = getProductList();
+    sendOrder(contact, productList);
+  } else {
+    alert("Votre panier est vide");
+    formOrder.reset();
+  }
+});
+
+// remplir l'objet contact avec les réponses du client
+
+let contact = {};
+
 function getContactInfo() {
-  let contact = {};
+ 
+  let formAnswers = document.querySelectorAll('.input-box > input');
+
+  for (let element=0; element < formAnswers.length; element++) {
+    formListnener(formAnswers[element]);
+  }
 
   return contact;
 }
 
+// remplir une liste avec les pruduits commandés, à envoyer
 function getProductList() {
   let products = [];
   cartProductList.forEach((element) => {
@@ -214,11 +256,12 @@ function getProductList() {
 
 // POST //
 
+// envoi des objets contacts et de la liste de produits commandés
 function sendOrder(contact, productList) {
   let orderData = { contact: contact, products: productList };
 
   const url = "http://​localhost:3000/api/furniture/order";
-  //const orderId = "";
+  const orderId = "";
 
   fetch(url, {
     method: "POST",
@@ -246,3 +289,9 @@ function sendOrder(contact, productList) {
       console.log(err);
     });
 }
+
+
+
+
+
+

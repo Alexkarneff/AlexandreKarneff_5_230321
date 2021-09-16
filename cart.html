@@ -1,7 +1,6 @@
 <html lang="fr">
 
 <head>
-      
   <meta charset="utf-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta description="Orinoco des meubles en bois de chêne de qualité">
@@ -56,7 +55,7 @@
     <div class="formContainer">
         <h2 class="title">Renseignez vos informations pour valider la commande</h2>
 
-        <form action="confirmedOrder.html" method="POST">
+        <form action="order.html" method="POST">
             <div class="input-box">
                 <label for="firstName">Prénom :</label>
                 <input type="text" name="firstName" value="" id="firstName" placeholder="Entrez votre prénom"
@@ -87,7 +86,7 @@
 
             <div class="input-box">
                 <label for="postalCode">Code postal :</label>
-                <input type="text" id="postalCode" name="postalCode" placeholder="Entrez le code postal">
+                <input type="text" id="postalCode" name="postalCode" placeholder="Entrez le code postal" required>
             </div>
 
             <div class="input-box">
@@ -104,11 +103,6 @@
     </div>
 </section>
 
-  <button id="goToOrderConfirm" class="btn-primary">
-    <a href="order.html">
-    Commander
-  </a>
-  </button>
 
   
 
