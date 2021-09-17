@@ -2,6 +2,7 @@ let cartProductList = JSON.parse(localStorage.getItem("cart"));
 const isCartEmpty = !cartProductList || cartProductList.length == 0;
 
 renderCartProducts(cartProductList);
+addListenerOnContactForm();
 
 // function isCartEmpty() {
 //	if (!isCartEmpty) {
@@ -25,10 +26,10 @@ function renderCartProducts(cartProductList) {
       removeButton.classList.add("btn-primary");
       removeButton.innerText = "Retirer du panier";
 
-		removeButton.addEventListener("click", function() {
-			removeProductFromLocalStorage(product);
-			productInCart.remove();
-		})
+      removeButton.addEventListener("click", function () {
+        removeProductFromLocalStorage(product);
+        productInCart.remove();
+      });
 
       const img = getProductInCartImg(product);
       const info = getProductInCart(product);
@@ -43,10 +44,9 @@ function renderCartProducts(cartProductList) {
 }
 
 function removeProductFromLocalStorage(product) {
-	let index = cartProductList.indexOf(product);
-	cartProductList.splice(index,1);
-	localStorage.setItem("cart", JSON.stringify(cartProductList));
-
+  let index = cartProductList.indexOf(product);
+  cartProductList.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cartProductList));
 }
 
 function getProductInCart(product) {
@@ -87,11 +87,9 @@ function removeButton() {
   removeDiv.classList.add("removeDiv");
 }
 
-
-
 // regex check
 
-const regexText = new RegExp("^[A-Za-z-äë]");
+const regexText = new RegExp("^[A-Za-z-äë]+$");
 
 const regexAddress = new RegExp("^[a-zA-Z0-9_-èé ]*$");
 
@@ -100,13 +98,13 @@ const regexPostalCode = new RegExp("^(?!00000)\\d{5}$");
 const regexEmail = new RegExp("^[A-Za-z0-9-_.]+@[a-z]{3,}[.][a-z]{2,4}$");
 
 function textCheck(value) {
-	if (regexText.test(value)) {
-		return true;
-	} else {
-		console.log(regexText);
-		console.log("entrée non valide!");
-		return false;
-	}
+  if (regexText.test(value)) {
+    return true;
+  } else {
+    console.log(regexText);
+    console.log("entrée non valide!");
+    return false;
+  }
 }
 function addressCheck(value) {
   if (regexAddress.test(value)) {
@@ -139,80 +137,93 @@ function emailCheck(value) {
   }
 }
 
-let validTexts
+let validTexts = false;
 let validAddress = false;
 let validPostalCode = false;
 let validEmail = false;
 
+function execCheckContactForm() {
+  let result = true;
+  let elements = getContactHtmlEleemnt();
+  elements.forEach((element) => {
+    if (!isValidContactForm(element)) {
+      result = false;
+    }
+  });
+  return result;
+}
+
+function isValidContactForm(element) {
+  // vérification des 3 champs de texte
+  if (
+    element.name == "firstName" ||
+    element.name == "lastName" ||
+    element.name == "city"
+  ) {
+    element.setAttribute("value", element.value);
+    validTexts = textCheck(element.value);
+
+    if (!validTexts) {
+      element.classList.add("errorText");
+      element.setAttribute("value", "");
+      return false;
+    } else {
+      element.classList.remove("errorText");
+    }
+  }
+
+  // vérification de l'adresse
+  if (element.name == "address" || element.name == "complement") {
+    element.setAttribute("value", element.value);
+    validAddress = addressCheck(element.value);
+
+    if (!validAddress) {
+      element.classList.add("errorText");
+      element.setAttribute("value", "");
+      return false;
+    } else {
+      element.classList.remove("errorText");
+    }
+  }
+
+  // vérification du code postal
+  if (element.name === "postalCode") {
+    element.setAttribute("value", element.value);
+    validPostalCode = postalCodeCheck(element.value);
+
+    if (!validPostalCode) {
+      element.classList.add("errorText");
+      element.setAttribute("value", "");
+      return false;
+    } else {
+      element.classList.remove("errorText");
+    }
+  }
+
+  //vérification de l'adresse email
+  if (element.type === "email") {
+    element.setAttribute("value", element.value);
+    validEmail = emailCheck(element.value);
+
+    if (!validEmail) {
+      element.classList.add("errorText");
+      element.setAttribute("value", "");
+      return false;
+    } else {
+      element.classList.remove("errorText");
+      // localStorage.emailAddress = JSON.stringify(element.value);
+    }
+  }
+  return true;
+}
+
 function formListnener(element) {
   element.addEventListener("change", function () {
-
-
-    // vérification des 3 champs de texte
-    if (element.name == 'firstName' || element.name == 'lastName' || element.name == 'city') {
-
-			element.setAttribute("value", this.value);
-			validTexts = textCheck(this.value);
-
-			if (!validTexts) {
-				element.classList.add('errorText');
-				element.setAttribute("value", "");
-			} else {
-				element.classList.remove('errorText');
-			}
-		}
-
-    // vérification de l'adresse 
-    if (element.name == "address" || element.name == "complement") {
-      element.setAttribute("value", this.value);
-      validAddress = addressCheck(this.value);
-
-      if (!validAddress) {
-        element.classList.add("errorText");
-        element.setAttribute("value", "");
-      } else {
-        element.classList.remove("errorText");
-      }
-    }
-
-
-    // vérification du code postal
-    if (element.name === "postalCode") {
-      element.setAttribute("value", this.value);
-      validPostalCode = postalCodeCheck(this.value);
-
-      if (!validPostalCode) {
-        element.classList.add("errorText");
-        element.setAttribute("value", "");
-      } else {
-        element.classList.remove("errorText");
-      }
-    }
-
-
-    //vérification de l'adresse email
-    if (element.type === "email") {
-      element.setAttribute("value", this.value);
-      validEmail = emailCheck(this.value);
-
-      if (!validEmail) {
-        element.classList.add("errorText");
-        element.setAttribute("value", "");
-      } else {
-        element.classList.remove("errorText");
-        localStorage.emailAddress = JSON.stringify(element.value);
-      }
-    }
-
-    if (element.hasAttribute('required'))  {
-      contact[element.name] = element.value
-    }
+    isValidContactForm(element);
   });
 }
 
-
 // FORM //
-
 
 formOrder = document.getElementsByTagName("form")[0];
 
@@ -221,9 +232,13 @@ formOrder = document.getElementsByTagName("form")[0];
 formOrder.addEventListener("submit", function (e) {
   e.preventDefault();
   if (!isCartEmpty) {
-    let contact = getContactInfo();
-    let productList = getProductList();
-    sendOrder(contact, productList);
+    if (execCheckContactForm()) {
+      let contact = getContactInfo();
+      let productList = getProductList();
+      sendOrder(contact, productList);
+    } else {
+      alert("Le formulaire n'est pas valide.");
+    }
   } else {
     alert("Votre panier est vide");
     formOrder.reset();
@@ -232,24 +247,39 @@ formOrder.addEventListener("submit", function (e) {
 
 // remplir l'objet contact avec les réponses du client
 
-let contact = {};
-
 function getContactInfo() {
- 
-  let formAnswers = document.querySelectorAll('.input-box > input');
-
-  for (let element=0; element < formAnswers.length; element++) {
-    formListnener(formAnswers[element]);
-  }
+  let contact = {};
+  contact.firstName = document.getElementById("firstName").value;
+  contact.lastName = document.getElementById("lastName").value;
+  contact.address = document.getElementById("address").value;
+  contact.city = document.getElementById("city").value;
+  contact.email = document.getElementById("email").value;
 
   return contact;
+}
+
+function addListenerOnContactForm() {
+  let elements = getContactHtmlEleemnt();
+  elements.forEach((element) => {
+    formListnener(element);
+  });
+}
+
+function getContactHtmlEleemnt() {
+  let elements = [];
+  let formAnswers = document.querySelectorAll(".input-box > input");
+
+  for (let element = 0; element < formAnswers.length; element++) {
+    elements.push(formAnswers[element]);
+  }
+  return elements;
 }
 
 // remplir une liste avec les pruduits commandés, à envoyer
 function getProductList() {
   let products = [];
   cartProductList.forEach((element) => {
-    products.push(element.id);
+    products.push(element._id);
   });
   return products;
 }
@@ -289,9 +319,3 @@ function sendOrder(contact, productList) {
       console.log(err);
     });
 }
-
-
-
-
-
-
