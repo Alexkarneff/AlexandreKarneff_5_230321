@@ -4,19 +4,11 @@ const isCartEmpty = !cartProductList || cartProductList.length == 0;
 renderCartProducts(cartProductList);
 addListenerOnContactForm();
 
-// function isCartEmpty() {
-//	if (!isCartEmpty) {
-
-//	} else {
-
-//	}
-// }
-
 function renderCartProducts(cartProductList) {
   if (isCartEmpty) {
     let emptyCart = document.createElement("p");
     emptyCart.textContent = "Votre panier est vide.";
-    document.getElementById("cartContainer").appendChild(emptyCart);
+    document.getElementById("totalPriceContainer").appendChild(emptyCart);
   } else {
     cartProductList.forEach((product) => {
       const productInCart = document.createElement("div");
@@ -40,6 +32,7 @@ function renderCartProducts(cartProductList) {
 
       document.getElementById("cartContainer").appendChild(productInCart);
     });
+    displayTotalPrice(cartProductList);
   }
 }
 
@@ -47,6 +40,7 @@ function removeProductFromLocalStorage(product) {
   let index = cartProductList.indexOf(product);
   cartProductList.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cartProductList));
+  displayTotalPrice(cartProductList);
 }
 
 function getProductInCart(product) {
@@ -85,6 +79,26 @@ function removeButton() {
 
   removeDiv.appendChild(removeText);
   removeDiv.classList.add("removeDiv");
+}
+
+function displayTotalPrice(cartProductList) {
+  let totalPrice = 0;
+
+  cartProductList.forEach((product) => {
+    totalPrice += product.price;
+  });
+
+  var div = document.getElementById("totalPriceContainer");
+  while (div.firstChild) {
+    div.removeChild(div.firstChild);
+  }
+
+  let totalPriceDisplay = document.createElement("div");
+  totalPriceDisplay.classList.add("totalPriceDisplay");
+  totalPriceDisplay.innerText =
+    "Le montant total de votre panier s'élève à " + totalPrice + " €.";
+
+  document.getElementById("totalPriceContainer").appendChild(totalPriceDisplay);
 }
 
 // regex check
@@ -144,7 +158,7 @@ let validEmail = false;
 
 function execCheckContactForm() {
   let result = true;
-  let elements = getContactHtmlEleemnt();
+  let elements = getContactHtmlElement();
   elements.forEach((element) => {
     if (!isValidContactForm(element)) {
       result = false;
@@ -259,13 +273,13 @@ function getContactInfo() {
 }
 
 function addListenerOnContactForm() {
-  let elements = getContactHtmlEleemnt();
+  let elements = getContactHtmlElement();
   elements.forEach((element) => {
     formListnener(element);
   });
 }
 
-function getContactHtmlEleemnt() {
+function getContactHtmlElement() {
   let elements = [];
   let formAnswers = document.querySelectorAll(".input-box > input");
 

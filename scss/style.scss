@@ -7,6 +7,7 @@ a {
 	color: $secondary;
 }
 
+
 .btn-primary {
 	margin: auto;
 	width: 200px;
@@ -26,8 +27,8 @@ a {
 	margin-top: 4em;
 
 	img {
-		width: 500px;
-		height: 400px;
+		width: 450px;
+		height: 370px;
 	}
 
 	a {
@@ -35,12 +36,16 @@ a {
 		color: $secondary;
 
 	}
+
+	p {
+		color: #3c3c3b;
+
+	}
 }
 
 #imgProduct {
 	width: 100%;
-	max-width: 800px;
-	height: 700px;
+
 	margin-bottom: 2em;
 	
 
@@ -55,10 +60,6 @@ a {
     width: 60%;
 	
 }
-.productsContainer {
-	justify-content: center;
-}
-
 .index_description {
 	margin: auto;
 
@@ -75,6 +76,29 @@ a {
 
 #addProductToCart {
 	margin-top: 5em;
+}
+
+.productsContainer {
+	margin-bottom: 1em;
+}
+
+@media (max-width: 990px) {
+.productsContainer {
+	margin: auto;
+}
+
+p {
+	font-size: 14;
+}
+}
+
+@media (max-width: 500px) {
+	#productsMainContainer {
+		img {
+			width: 200px;
+			height: 150px;
+		}
+	}
 }
 
 //cart
@@ -104,11 +128,35 @@ margin-left: 5em;
 
 //order 
 
+.errorText {
+	background-color: #b20a37;
+	border: 1px solid #b20a37;
+	color: white;
+}
 .formContainer {
 	margin-top: 5em;
 	padding-left: 5em;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+	input {
+		display: block;
+		width: 500px;
+		margin-bottom: 1em;
+		border: none;
+		border: 1px solid rgba(0,0,0,.1);
+		border-radius: 2px;
+		padding-left: 5px;
+		outline: none;
+
+	}
 }
 
-.totalPriceContainer {
-	margin-top: 5em;
+#totalPriceContainer {
+	width: 50%;
+	margin-top: 3em;
+	margin-left: 5em;
 }

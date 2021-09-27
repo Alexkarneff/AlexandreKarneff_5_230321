@@ -23,7 +23,7 @@ function displayTotalPrice(cartProductList) {
 
 	let totalPriceDisplay = document.createElement("p");
 	totalPriceDisplay.classList.add("totalPriceDisplay");
-	totalPriceDisplay.innerText = "Le montant total de celle-ci s'élève à " + totalPrice + ' €.';
+	totalPriceDisplay.innerText = "Nous vous remercions pour votre commande, le montant total de celle-ci s'élève à " + totalPrice + ' €.';
 
 	
 	document.getElementById('totalPriceDisplay').appendChild(totalPriceDisplay);

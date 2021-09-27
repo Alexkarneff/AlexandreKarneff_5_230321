@@ -56,11 +56,12 @@ function addToCart(product) {
     const newCartProductList = [];
     newCartProductList.push(product);
     localStorage.setItem("cart", JSON.stringify(newCartProductList));
+    alert("Produit ajouté au panier avec succès !");
   } else {
     const cartProductList = JSON.parse(cart);
     cartProductList.push(product);
     localStorage.setItem("cart", JSON.stringify(cartProductList));
+    alert("Produit ajouté au panier avec succès !");
   }
 
-  console.log(localStorage.getItem("cart"));
 }
