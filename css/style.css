@@ -11114,9 +11114,19 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+@media screen and (min-width: 2500px) {
+  * {
+    margin: auto;
+    max-width: 2500px;
+  }
+}
 a {
   text-decoration: none;
   color: #915cf9;
+}
+
+p {
+  font-size: 18;
 }
 
 .btn-primary {
@@ -11193,7 +11203,7 @@ a {
   }
 
   p {
-    font-size: 14;
+    font-size: 15;
   }
 }
 @media (max-width: 500px) {
@@ -11273,8 +11283,8 @@ a {
 .formContainer {
   margin-top: 5em;
   padding-left: 5em;
-  width: 100vw;
-  height: 100vh;
+  width: 70vw;
+  height: 70vh;
   display: grid;
   align-items: center;
   justify-items: center;
