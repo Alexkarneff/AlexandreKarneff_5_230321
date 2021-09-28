@@ -1,4 +1,3 @@
-
 // GET de l'api des produits pour en faire une liste
 fetch('http://localhost:3000/api/furniture')
 .then(function(res) {
@@ -14,7 +13,6 @@ fetch('http://localhost:3000/api/furniture')
 .catch (function(err) {
 	console.log(err);
 });
-
 
 // faire apparaitre les composantes du produits
 function renderProducts(productsArray) {

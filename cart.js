@@ -4,6 +4,7 @@ const isCartEmpty = !cartProductList || cartProductList.length == 0;
 renderCartProducts(cartProductList);
 addListenerOnContactForm();
 
+// Pour chaque produit dans le panier, création d'une div avec les infos du produit + un bouton retirer du panier
 function renderCartProducts(cartProductList) {
   if (isCartEmpty) {
     let emptyCart = document.createElement("p");
@@ -16,7 +17,7 @@ function renderCartProducts(cartProductList) {
 
       const removeButton = document.createElement("button");
       removeButton.classList.add("btn-primary");
-      removeButton.innerText = "Retirer du panier";
+      removeButton.innerText = "Retirer";
 
       removeButton.addEventListener("click", function () {
         removeProductFromLocalStorage(product);
@@ -36,6 +37,7 @@ function renderCartProducts(cartProductList) {
   }
 }
 
+// fonction pour retirer un produit du local storage
 function removeProductFromLocalStorage(product) {
   let index = cartProductList.indexOf(product);
   cartProductList.splice(index, 1);
@@ -43,6 +45,7 @@ function removeProductFromLocalStorage(product) {
   displayTotalPrice(cartProductList);
 }
 
+// Récupération des informations à afficher d'un produit et création des balises de textes les contenant
 function getProductInCart(product) {
   const description = document.createElement("div");
   description.classList.add("cart_description");
@@ -60,6 +63,8 @@ function getProductInCart(product) {
   return description;
 }
 
+
+// Récupération de l'image du produit et création de la balise img
 function getProductInCartImg(product) {
   const image = document.createElement("img");
   image.setAttribute("src", product.imageUrl);
@@ -67,6 +72,7 @@ function getProductInCartImg(product) {
   return image;
 }
 
+// Ajout d'un bouton Retirer à chaque item du panier
 function removeButton() {
   const removeDiv = document.createElement("div");
   const removeText = document.createElement("p");
@@ -81,6 +87,7 @@ function removeButton() {
   removeDiv.classList.add("removeDiv");
 }
 
+// Affichage du prix total des produits dans le panier
 function displayTotalPrice(cartProductList) {
   let totalPrice = 0;
 
@@ -96,13 +103,12 @@ function displayTotalPrice(cartProductList) {
   let totalPriceDisplay = document.createElement("div");
   totalPriceDisplay.classList.add("totalPriceDisplay");
   totalPriceDisplay.innerText =
-    "Le montant total de votre panier s'élève à " + totalPrice + " €.";
+    "Montant total du panier : " + totalPrice + " €.";
 
   document.getElementById("totalPriceContainer").appendChild(totalPriceDisplay);
 }
 
-// regex check
-
+// Les différents test regex
 const regexText = new RegExp("^[A-Za-z-äë]+$");
 
 const regexAddress = new RegExp("^[a-zA-Z0-9_-èé ]*$");
@@ -115,7 +121,6 @@ function textCheck(value) {
   if (regexText.test(value)) {
     return true;
   } else {
-    console.log(regexText);
     console.log("entrée non valide!");
     return false;
   }
@@ -124,7 +129,6 @@ function addressCheck(value) {
   if (regexAddress.test(value)) {
     return true;
   } else {
-    console.log(regexAddress);
     console.log("adresse non valide!");
     return false;
   }
@@ -134,7 +138,6 @@ function postalCodeCheck(value) {
   if (regexPostalCode.test(value)) {
     return true;
   } else {
-    console.log(regexPostalCode);
     console.log("code postal non valide!");
     return false;
   }
@@ -145,17 +148,14 @@ function emailCheck(value) {
   if (regexEmail.test(value)) {
     return true;
   } else {
-    console.log(regexEmail);
     console.log("mail non valide");
     return false;
   }
 }
 
-let validTexts = false;
-let validAddress = false;
-let validPostalCode = false;
-let validEmail = false;
 
+
+// On exécute le check sur le form client
 function execCheckContactForm() {
   let result = true;
   let elements = getContactHtmlElement();
@@ -166,6 +166,11 @@ function execCheckContactForm() {
   });
   return result;
 }
+
+let validTexts = false;
+let validAddress = false;
+let validPostalCode = false;
+let validEmail = false;
 
 function isValidContactForm(element) {
   // vérification des 3 champs de texte
@@ -231,6 +236,7 @@ function isValidContactForm(element) {
   return true;
 }
 
+// un evenement qui s'active au changement de l'un des element du form
 function formListnener(element) {
   element.addEventListener("change", function () {
     isValidContactForm(element);
@@ -260,7 +266,6 @@ formOrder.addEventListener("submit", function (e) {
 });
 
 // remplir l'objet contact avec les réponses du client
-
 function getContactInfo() {
   let contact = {};
   contact.firstName = document.getElementById("firstName").value;
@@ -272,6 +277,7 @@ function getContactInfo() {
   return contact;
 }
 
+// Pour activer le listener sur le changement dans un des encarts du form
 function addListenerOnContactForm() {
   let elements = getContactHtmlElement();
   elements.forEach((element) => {

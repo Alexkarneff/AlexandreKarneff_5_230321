@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta description="Orinoco des meubles en bois de chêne de qualité">
       
   <link rel="stylesheet" href="css/style.css" />
@@ -44,6 +44,10 @@
     </div>
   </nav>
 
+  <div class="myCart">
+    <h2>Mon Panier </h2>
+  </div>
+  
   <div id="cartContainer">    
   </div>
       
@@ -55,23 +59,23 @@
   <section id="form">
 
     <div class="formContainer">
-        <h2 class="title">Renseignez vos informations pour valider la commande</h2>
+        <h2 class="title">Renseignez vos informations pour valider la commande : </h2>
 
         <form action="order.html" method="POST">
             <div class="input-box">
                 <label for="firstName">Prénom :</label>
-                <input type="text" name="firstName" value="" id="firstName" placeholder="Entrez votre prénom"
+                <input type="text" name="firstName" value="" id="firstName" placeholder="Votre prénom"
                     required>
             </div>
 
             <div class="input-box">
                 <label for="lastName">Nom :</label>
-                <input type="text" id="lastName" name="lastName" placeholder="Entrez votre nom" value="" required>
+                <input type="text" id="lastName" name="lastName" placeholder="Votre Nom" value="" required>
             </div>
 
             <div class="input-box">
                 <label for="address">Adresse :</label>
-                <input type="text" id="address" name="address" placeholder="Entrez le numéro et la rue" value=""
+                <input type="text" id="address" name="address" placeholder="Rue/Numéro" value=""
                     required>
             </div>
 
@@ -83,17 +87,17 @@
 
             <div class="input-box">
                 <label for="city">Ville :</label>
-                <input type="text" id="city" name="city" placeholder="Entrez votre ville de résidence" required>
+                <input type="text" id="city" name="city" placeholder="Votre ville de résidence" required>
             </div>
 
             <div class="input-box">
                 <label for="postalCode">Code postal :</label>
-                <input type="text" id="postalCode" name="postalCode" placeholder="Entrez le code postal" required>
+                <input type="text" id="postalCode" name="postalCode" placeholder="Votre code postal" required>
             </div>
 
             <div class="input-box">
                 <label for="email">E-Mail :</label>
-                <input type="email" id="email" value="" name="email" placeholder="Entrez votre adresse email"
+                <input type="email" id="email" value="" name="email" placeholder="Votre adresse email"
                     required>
             </div>
 

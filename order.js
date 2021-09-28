@@ -22,22 +22,22 @@ function displayTotalPrice(cartProductList) {
 
 
 	let totalPriceDisplay = document.createElement("p");
-	totalPriceDisplay.classList.add("totalPriceDisplay");
+	totalPriceDisplay.classList.add("orderPriceDisplay");
 	totalPriceDisplay.innerText = "Nous vous remercions pour votre commande, le montant total de celle-ci s'élève à " + totalPrice + ' €.';
 
 	
-	document.getElementById('totalPriceDisplay').appendChild(totalPriceDisplay);
+	document.getElementById('orderPriceContainer').appendChild(totalPriceDisplay);
 
 }};
 
+// Affichage de l'id de la commande
 function displayOrderId(orderId) 
 {
 	let orderIdDisplay = document.createElement("p");
 	orderIdDisplay.classList.add("orderIdDisplay");
 	orderIdDisplay.innerText = "Votre identifiant de commande est le suivant: " + orderId + '.';
 
-	document.getElementById('orderIdDisplay').appendChild(orderIdDisplay);
-	
+	document.getElementById('orderIdContainer').appendChild(orderIdDisplay);
 }
 
 

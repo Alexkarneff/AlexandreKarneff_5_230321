@@ -2,6 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const product_id = urlParams.get("id");
 
+// On récupère les données sur le produit sélectionné
 fetch("http://localhost:3000/api/furniture/" + product_id)
   .then(function (res) {
     if (res.ok) {
@@ -39,6 +40,8 @@ fetch("http://localhost:3000/api/furniture/" + product_id)
     console.log(error);
   });
 
+
+// Ajout des options de vernis 
 function addVarnishOption(varnishOption) {
   const newOption = document.createElement("option");
   newOption.classList.add("varnishOption");
@@ -49,6 +52,7 @@ function addVarnishOption(varnishOption) {
   return newOption;
 }
 
+// Fonction ajoutant le produit au panier au clic sur le bouton ajouter
 function addToCart(product) {
   const cart = localStorage.getItem("cart");
 
@@ -63,5 +67,4 @@ function addToCart(product) {
     localStorage.setItem("cart", JSON.stringify(cartProductList));
     alert("Produit ajouté au panier avec succès !");
   }
-
 }

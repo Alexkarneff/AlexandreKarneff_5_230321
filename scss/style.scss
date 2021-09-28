@@ -82,7 +82,7 @@ a {
 	margin-bottom: 1em;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 980px) {
 .productsContainer {
 	margin: auto;
 }
@@ -102,37 +102,83 @@ p {
 }
 
 //cart
+
+.myCart {
+	margin-top: 5em;
+	margin-left: 8em;
+}
 .cartItemImage {
-	width: 500px;
+	width: 40%;
 }
 
+
 #cartContainer {
-margin-top: 8em;
-margin-left: 5em;
+margin-top: 2em;
+margin-left: 1em;
+}
+#totalPriceContainer {
+	width: 50%;
+	margin: auto;
 }
 
 .cartProductsContainer {
 	display: flex;
 	justify-content: space-around;
 	padding-bottom: 2em;
+
+	button {
+		width: 25%;
+		
+	}
 }
 
 .cart_description {
 	margin: auto;
+	width: 25%;
 
 }
 
+@media (max-width: 980px) {
+	.cartProductsContainer {
+		p {
+			font-size: 14;
+		}
+		button {
+			width: 15%;
+			font-size: 13;
+			height: 3em;
+		}
+	}
+	.totalPriceDisplay {
+		font-size: 14;
+	}
 
-
-
-
-//order 
-
-.errorText {
-	background-color: #b20a37;
-	border: 1px solid #b20a37;
-	color: white;
 }
+@media (max-width: 500px) {
+	.cartProductsContainer {
+		p {
+			font-size: 12;
+		}
+		button {
+			width: 20%;
+			font-size: 11;
+		}
+	}
+
+	.totalPriceDisplay {
+		font-size: 12;
+		margin-bottom: 3em;
+	}
+
+	.myCart {
+		margin-left: 2em;
+		h2 {
+		font-size: 16;
+		}
+	}
+}
+
+
 .formContainer {
 	margin-top: 5em;
 	padding-left: 5em;
@@ -144,7 +190,7 @@ margin-left: 5em;
 
 	input {
 		display: block;
-		width: 500px;
+		width: 400px;
 		margin-bottom: 1em;
 		border: none;
 		border: 1px solid rgba(0,0,0,.1);
@@ -155,8 +201,52 @@ margin-left: 5em;
 	}
 }
 
-#totalPriceContainer {
-	width: 50%;
-	margin-top: 3em;
-	margin-left: 5em;
+@media (max-width: 980px) {
+	.formContainer {
+		padding-left: 2.5em;
+		font-size: 14;
+
+
+		h2 {
+			font-size: 16;
+		}
+
+	}
 }
+
+@media (max-width: 450px) {
+	.formContainer {
+		justify-items: flex-start;
+		font-size: 12;
+
+		input {
+			width: 200px
+		}
+
+		h2 {
+			font-size: 13;
+		}
+	}
+}
+
+
+.errorText {
+	background-color: #b20a37;
+	border: 1px solid #b20a37;
+	color: white;
+}
+
+
+//order 
+
+#orderPriceContainer {
+	margin-left: 1em;
+	margin-top: 5em;
+}
+#orderIdContainer {
+	margin-left: 1em;
+}
+
+
+
+
