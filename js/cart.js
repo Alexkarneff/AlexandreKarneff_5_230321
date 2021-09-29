@@ -55,7 +55,7 @@ function getProductInCart(product) {
   productName.className = "cart_name";
   productPrice.className = "cart_price";
   productName.innerText = product.name;
-  productPrice.innerText = product.price + " €";
+  productPrice.innerText = product.price/100 + " €";
 
   description.appendChild(productName);
   description.appendChild(productPrice);
@@ -103,7 +103,7 @@ function displayTotalPrice(cartProductList) {
   let totalPriceDisplay = document.createElement("div");
   totalPriceDisplay.classList.add("totalPriceDisplay");
   totalPriceDisplay.innerText =
-    "Montant total du panier : " + totalPrice + " €.";
+    "Montant total du panier : " + totalPrice/100 + " €.";
 
   document.getElementById("totalPriceContainer").appendChild(totalPriceDisplay);
 }

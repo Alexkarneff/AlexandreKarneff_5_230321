@@ -15,7 +15,7 @@ fetch("http://localhost:3000/api/furniture/" + product_id)
       product.name;
 
     document.getElementsByClassName("product_price")[0].textContent = 
-    "Prix: " + product.price + " €";
+    "Prix: " + product.price/100 + " €";
 
     document.getElementById("imgProduct").setAttribute("src", product.imageUrl);
 

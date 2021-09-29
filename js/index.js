@@ -40,7 +40,7 @@ function renderProducts(productsArray) {
 // Gcréation du lien href vers la page du produit
 function getProductLink(product) {
 	const link = document.createElement("a");
-	link.setAttribute("href", "products.html?id="+product._id);
+	link.setAttribute("href", "pages/products.html?id="+product._id);
 	return link;
 }
 
@@ -62,7 +62,7 @@ function getProductDescription(product) {
 	productName.className = "index_name";
 	productPrice.className = "index_price";
 	productName.innerText = product.name;
-	productPrice.innerText = product.price + " €";
+	productPrice.innerText = product.price/100 + " €";
 	
 	description.appendChild(productName);
 	description.appendChild(productPrice);
