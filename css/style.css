@@ -11114,10 +11114,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-@media screen and (min-width: 2500px) {
+@media screen and (min-width: 2800px) {
   * {
     margin: auto;
-    max-width: 2500px;
+    max-width: 2800px;
   }
 }
 a {
